@@ -1,11 +1,22 @@
+import { Link } from "react-router-dom";
 import { useBookStore } from "../store";
-import BookDetail from '../components/BookDetail';
+import styled from 'styled-components'
+import BookDetail from "../components/BookDetail";
+
+const LinkButton = styled(Link)({
+  margin: "0  auto",
+  width: "45%",
+  textTransform: "uppercase",
+  background: '#34ddce',
+  borderRadius: '5px',
+  color: '#fff'
+})
 
 const Home = () => {
   const totalBooks = useBookStore((state) => state.totalBooks);
 
   return (
-    <div>
+    <>
       <div className="columns is-centered">
         <div className="column is-10">
           <div className="">
@@ -24,17 +35,10 @@ const Home = () => {
           <div className="box block">
             <BookDetail />
           </div>
-          <div className="columns is-centered">
-            <button
-              className="button is-primary"
-              style={{
-                margin: "0  auto",
-                width: "45%",
-                textTransform: "uppercase",
-              }}
-            >
+          <div className="columns is-centered" style={{ margin: "30px auto" }}>
+            <LinkButton to="/addbook">
               Add a new book
-            </button>
+            </LinkButton>
 
             <button
               className="button is-info"
@@ -49,7 +53,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
